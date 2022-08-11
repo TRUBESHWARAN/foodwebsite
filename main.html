@@ -1,0 +1,151 @@
+<head>
+
+    <title>
+        Tiffin shop
+    </title>
+
+    <style>
+        body{
+            background-color: beige;
+        }
+        .item-container{
+            border: 3px solid black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+            width: 400px;
+        }
+        .title{
+            display: flex;
+        }
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="heading">
+        <h1><center>Chennai Tiffen Shop</center></h1>
+        <h2><center>Menu</center></h2>
+        <br>
+    </div>
+    
+    <div id="container" class="container">
+       <div class="item-container">
+           <h3>Wheat Dosa</h3>
+           <img width=200px; src="wheat.jpg" >
+           <p><b>Ingredients:</b></p>
+           <p>500ml water</p>
+           <p>100g Ghee</p>
+           <p>500g Wheat</p>
+           <p>1spoon of Baking Soda</p>
+           <p>100g of Suji</p>
+           <p>200g of Plain Curd</p>
+
+           <button class="remove-button">Remove</button>
+       </div>
+
+       <div class="item-container">
+        <h3>Pongal</h3>
+        <img width=200px; src="Pongal.jpg">
+        <p><b>Ingredients:</b></p>
+        <p>Rice-1cup</p>
+        <p>Desi ghee-1/2 cup</p>
+        <p>Cashew nuts-10 to 12</p>
+        <p>Green elaichi-2 </p>
+        <button class="remove-button">Remove</button>
+       </div>
+
+    <div class="item-container">
+        <h3>Vada</h3>
+        <img width=200px; src="Vada.jpg">
+        <p><b>Ingredients:</b></p>
+        <p>Urad dal-2 cups</p>
+        <p>Ginger-1 inch piece </p>
+        <p>Green chili-1</p>
+        <p>Salt to taste</p>
+        <p>Oil for frying</p>
+        <button class="remove-button">Remove</button>
+    </div>
+
+    <div class="item-container">
+        <h3>Chapati </h3>
+        <img width=200px; src="chapathi.jpg">
+        <p><b>Ingredients:</b></p>
+        <p>1 cup whole wheat flour</p>
+        <p>1 cup all-purpose flour</p>
+        <p>1 teaspoon salt</p>
+        <p>¾ cup hot water or as needed</p>
+        <p>2 tablespoons olive oil</p>
+        <button class="remove-button">Remove</button>
+    </div>
+
+    <div class="item-container">
+        <h3>Parotta</h3>
+        <img width=200px; src="Parotta.jpg">
+        <p><b>Ingredients:</b></p>
+        <p>oil</p>
+        <p>water </p>
+        <p>2 tbsp ghee</p>
+        <p>1 tsp salt</p>
+        <p>3 cup maida</p>
+        <button class="remove-button">Remove</button>
+    </div>
+
+    <div class="item-container">
+        <h3>Khichdi</h3>
+        <img width=200px; src="./Khichdi.jpg">
+        <p><b>Ingredients:</b></p>
+        <p>1 to 2 tablespoons chopped coriander leaves</p>
+        <p>1 teaspoon finely chopped ginger</p>
+        <p>⅓ to ½ chopped tomatoes</p>
+        <p>⅓ finely chopped onions</p>
+        <button class="remove-button">Remove</button>
+    </div>
+
+    </div>
+
+    <div style="margin: 20px">
+        <input id="inputbox" type="text">
+        <button>Add Item</button>
+    </div>
+
+</body>
+
+<script>
+    
+    function removeItem(event) {
+        event.target.parentElement.remove()
+    }
+    
+    let removeButtons = document.getElementsByClassName('remove-button')
+
+    for(let i=0;i<removeButtons.length;i++) {
+        removeButtons[i].addEventListener("click",removeItem)
+    }
+        
+    function addItem() {
+        let itemToAdd = document.getElementById('inputbox').value
+        let htmlToAdd = `
+        <div class="item-container">
+            <h3>${itemToAdd}</h3>
+            <button onclick = "removeItem('${itemToAdd}')">Remove</button>
+        </div>`
+
+        let newElement = document.createElement('div')
+        newElement.innerHTML = htmlToAdd
+
+        document.getElementById('container').appendChild(newElement)
+         
+        document.getElementById("container").innerHTML += `
+        <div class="item-container">
+        <div class="title">${itemToAdd}</div>
+        <button onclick = "removeItem('${itemToAdd}')">Remove</button>
+        </div>
+        `
+
+    }
+</script>
